@@ -7,7 +7,7 @@
     "url": "https://github.com/SebasWebDev/usabilla-u4a-cordova.git"
   },
   "cordova": {
-    "id": "usabilla-cordova",
+    "id": "usabilla-cordova-xcode-11",
     "platforms": [
       "android",
       "ios"
