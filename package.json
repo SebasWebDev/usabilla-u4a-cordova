@@ -4,7 +4,7 @@
   "description": "Usabilla SDK for Cordova",
   "repository": {
     "type": "git",
-    "url": "https://github.com/usabilla/usabilla-u4a-cordova.git"
+    "url": "https://github.com/SebasWebDev/usabilla-u4a-cordova.git"
   },
   "cordova": {
     "id": "usabilla-cordova",
