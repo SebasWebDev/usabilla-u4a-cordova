@@ -43,8 +43,6 @@
         </dependency>
         <pods-config ios-min-version="9.0" use-frameworks="true" />
         <source-file src="src/ios/UsabillaCordova.swift" />
-        <pod name="Usabilla"
-             git="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk"
-             commit="9f72299a0b4ce1f9bf806d968c34955a7ed9bd02" />
+        <pod name="Usabilla" git="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk" />
     </platform>
 </plugin>
