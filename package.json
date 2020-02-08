@@ -1,13 +1,13 @@
 {
-  "name": "usabilla-cordova",
+  "name": "usabilla-cordova-xcode-11",
   "version": "0.0.0-development",
-  "description": "Usabilla SDK for Cordova",
+  "description": "Usabilla SDK for Cordova. Based on usabilla-cordova from Usabilla.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/usabilla/usabilla-u4a-cordova.git"
+    "url": "https://github.com/SebasWebDev/usabilla-u4a-cordova.git"
   },
   "cordova": {
-    "id": "usabilla-cordova",
+    "id": "usabilla-cordova-xcode-11",
     "platforms": [
       "android",
       "ios"
