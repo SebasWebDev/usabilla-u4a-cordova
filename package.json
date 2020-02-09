@@ -1,20 +1,20 @@
 {
   "name": "usabilla-cordova-compatible",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Usabilla SDK for Cordova. Based on usabilla-cordova from Usabilla.",
   "repository": {
     "type": "git",
     "url": "https://github.com/SebasWebDev/usabilla-u4a-cordova.git"
   },
   "cordova": {
-    "id": "usabilla-cordova-xcode-11",
+    "id": "usabilla-cordova-compatible",
     "platforms": [
       "android",
       "ios"
     ]
   },
   "dependencies": {
-    "xml2js": "^0.4.17"
+    "xml2js": "^0.4.23"
   },
   "scripts": {
     "semantic-release": "semantic-release"
