@@ -6,8 +6,14 @@ const fs = require('fs');
 const path = require('path');
 const utilities = require("../lib/utilities");
 
-module.exports = function () {
-    const pluginPath = path.resolve('./plugin.xml');
+module.exports = function (context) {
+    const platforms = context.opts.cordova.platforms;
+
+    if (platforms.indexOf("ios") === -1) {
+        return null;
+    }
+
+    const pluginPath = path.resolve(context.opts.plugin.dir, './plugin.xml');
     const pluginContent = fs.readFileSync(pluginPath).toString();
 
     utilities.getXcodeVersion().then((xcodeVersion) => {
