@@ -7,7 +7,7 @@ const path = require('path');
 const utilities = require("../lib/utilities");
 
 module.exports = function () {
-    const pluginPath = path.resolve('../..', './plugin.xml');
+    const pluginPath = path.resolve('./plugin.xml');
     const pluginContent = fs.readFileSync(pluginPath).toString();
 
     utilities.getXcodeVersion().then((xcodeVersion) => {
