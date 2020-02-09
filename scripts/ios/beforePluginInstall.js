@@ -7,11 +7,16 @@ const path = require('path');
 const utilities = require("../lib/utilities");
 
 module.exports = function (context) {
-    const response = new Promise();
+    let resolve, reject;
+    const response = new Promise((res, rej) => {
+        resolve = res;
+        reject = rej;
+    });
+
     const platforms = context.opts.cordova.platforms;
 
     if (platforms.indexOf("ios") === -1) {
-        response.reject('Platform ios not found.');
+        reject('Platform ios not found.');
     }
 
     const pluginPath = path.resolve(context.opts.plugin.dir, './plugin.xml');
@@ -26,10 +31,10 @@ module.exports = function (context) {
             `<pod name="Usabilla" git="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk" branch="${version}" />`
         );
         fs.writeFileSync(pluginPath, newContent);
-        response.resolve('Hook executed successfully');
+        resolve('Hook executed successfully');
     }).catch((error) => {
         console.error(error);
-        response.reject(error);
+        reject(error);
     });
 
     return response;
