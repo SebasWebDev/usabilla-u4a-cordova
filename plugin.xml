@@ -32,7 +32,7 @@
         <hook type="after_plugin_install" src="scripts/android/afterPluginInstall.js" />
     </platform>
     <platform name="ios">
-        <hook type="before_plugin_install" src="scripts/androidBeforeInstall.js" />
+        <hook type="before_plugin_install" src="scripts/ios/beforePluginInstall.js" />
         <config-file target="config.xml" parent="/*">
             <feature name="UsabillaCordova">
                 <param name="ios-package" value="UsabillaCordova" />
