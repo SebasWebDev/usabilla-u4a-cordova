@@ -7,24 +7,30 @@ const path = require('path');
 const utilities = require("../lib/utilities");
 
 module.exports = function (context) {
+    const response = new Promise();
     const platforms = context.opts.cordova.platforms;
 
     if (platforms.indexOf("ios") === -1) {
-        return null;
+        response.reject('Platform ios not found.');
     }
 
     const pluginPath = path.resolve(context.opts.plugin.dir, './plugin.xml');
+    console.log("Usabilla plugin path:" + pluginPath);
     const pluginContent = fs.readFileSync(pluginPath).toString();
 
     utilities.getXcodeVersion().then((xcodeVersion) => {
-        const version = xcodeVersion.replace(' ', '-');
-        console.log('Found Xcode version: ' + version);
+        const version = xcodeVersion.replace(' ', '-').replace(/(?:\r|\n|\t)/, '');
+        console.log('Found Xcode version: ' + version + ' --');
         const newContent = pluginContent.replace(
             '<pod name="Usabilla" git="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk" />',
             `<pod name="Usabilla" git="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk" branch="${version}" />`
         );
         fs.writeFileSync(pluginPath, newContent);
+        response.resolve('Hook executed successfully');
     }).catch((error) => {
         console.error(error);
+        response.reject(error);
     });
+
+    return response;
 };
