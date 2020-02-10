@@ -6,7 +6,6 @@ const fs = require('fs');
 const path = require('path');
 const utilities = require("../lib/utilities");
 const xcode = require('xcode');
-
 module.exports = function (context) {
     let resolve, reject;
     const response = new Promise((res, rej) => {
@@ -33,8 +32,9 @@ module.exports = function (context) {
         );
         fs.writeFileSync(pluginPath, newContent);
         if (xcode) {
+            const project = xcode.project(context.opts.projectRoot);
             // Adds the pods to the library search
-            xcode.addToLibrarySearchPaths(`${context.opts.projectRoot}/Pods/**`);
+            project.addToLibrarySearchPaths(`${context.opts.projectRoot}/Pods/**`);
         }
         resolve('Hook executed successfully');
     }).catch((error) => {
