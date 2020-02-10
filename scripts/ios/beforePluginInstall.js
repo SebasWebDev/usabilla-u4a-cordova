@@ -5,6 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const utilities = require("../lib/utilities");
+const xcode = require('xcode');
 
 module.exports = function (context) {
     let resolve, reject;
@@ -31,6 +32,10 @@ module.exports = function (context) {
             `<pod name="Usabilla" git="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk" branch="${version}" />`
         );
         fs.writeFileSync(pluginPath, newContent);
+        if (xcode) {
+            // Adds the pods to the library search
+            xcode.addToLibrarySearchPaths(`${context.opts.projectRoot}/Pods/**`);
+        }
         resolve('Hook executed successfully');
     }).catch((error) => {
         console.error(error);
